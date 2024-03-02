@@ -1,10 +1,13 @@
 import 'package:bank_app/core/services/injection_container.dart';
+import 'package:bank_app/firebase_options.dart';
 import 'package:bank_app/src/auth/views/auth_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await init();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initInjectionContainer();
   await bioController.init();
   runApp(const MainApp());
 }

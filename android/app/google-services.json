@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1092033376029",
+    "project_id": "my-bank-app-02032024",
+    "storage_bucket": "my-bank-app-02032024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092033376029:android:1bedaefdf65a78eb1a7bf4",
+        "android_client_info": {
+          "package_name": "br.com.nickdev.bank_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiImeup1hjMdt-v1u5iEc8VGkBjlRx4C8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
