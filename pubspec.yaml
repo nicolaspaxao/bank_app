@@ -1,17 +1,21 @@
 name: bank_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.2.6 <4.0.0'
+  sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
   firebase_core: ^2.25.5
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^10.7.0
   get_it: ^7.6.7
+  go_router: ^13.2.0
+  google_fonts: ^6.2.0
   local_auth: ^2.2.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +24,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
