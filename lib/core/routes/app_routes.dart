@@ -1,11 +1,15 @@
 import 'package:bank_app/core/services/storage_service.dart';
+import 'package:bank_app/main.dart';
 import 'package:bank_app/src/auth/views/auth_screen.dart';
 import 'package:bank_app/src/onboarding/views/onboarding_screen.dart';
 import 'package:bank_app/src/splash/views/splash_screen.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
+  observers: [FirebaseAnalyticsObserver(analytics: instance)],
   routes: <RouteBase>[
     GoRoute(
       path: SplashScreen.routeName,

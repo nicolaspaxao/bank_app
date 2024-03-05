@@ -7,7 +7,9 @@ environment:
   sdk: ">=3.2.6 <4.0.0"
 
 dependencies:
+  firebase_analytics: ^10.8.7
   firebase_core: ^2.25.5
+  firebase_crashlytics: ^3.4.16
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.7.0
