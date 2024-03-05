@@ -8,6 +8,7 @@ import 'package:bank_app/firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,24 +16,23 @@ import 'package:flutter/services.dart';
 late FirebaseAnalytics instance;
 
 Future<void> main() async {
-  runZonedGuarded<Future<void>>(() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
-    await initInjectionContainer();
-    await initStorage();
-    await bioController.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await initInjectionContainer();
+  await initStorage();
+  await bioController.init();
+  themeController.loadThemeMode();
+  instance = FirebaseAnalytics.instance;
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack);
+    return true;
+  };
 
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    themeController.loadThemeMode();
-    FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-    instance = FirebaseAnalytics.instance;
-
-    // The following lines are the same as previously explained in "Handling uncaught errors"
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-
-    runApp(const MainApp());
-  }, (error, stack) => FirebaseCrashlytics.instance.recordError(error, stack));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
